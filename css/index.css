@@ -1,0 +1,36 @@
+:root {
+	--background-img: url(../img/books.png);
+	--color-medium: #c9c3c3;
+    --color-dark: #7a7878;
+    --color-unaccent: #524c4c;
+    --color-white: white;
+    --coloe-error-light: #eb1111;
+    --color-error-dark: #7a0505;
+    
+    --spacing-small: 10px;
+    --spacing-medium: 15px;
+    --spacing-large: 30px;
+
+    --border-radius: 5px;
+    --linear-gradient: linear-gradient(90deg, rgba(117,14,219,1) 0%, 
+                                              rgba(231,125,18,1) 50%, 
+                                              rgba(119,210,13,1) 100%);
+    --box-shadow: 
+        0 16px 24px 2px rgba(33, 37, 41, 0.02),
+        0 6px 30px 5px rgba(33, 37, 41, 0.04),
+        0 8px 10px -5px rgba(33, 37, 41, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    line-height: 1.8;
+    background: var(--background-img);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
