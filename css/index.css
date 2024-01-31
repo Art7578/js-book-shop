@@ -30,7 +30,5 @@ body {
     padding: 0;
     font-family: sans-serif;
     line-height: 1.8;
-    background: var(--background-img);
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: var(--color-medium);
 }
