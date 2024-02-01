@@ -14,5 +14,5 @@ fetch('books.json')
         render();
     })
     .catch(error => {
-        console.log(error)
+        errorPage.render();
     });
