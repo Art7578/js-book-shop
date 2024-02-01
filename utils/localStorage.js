@@ -30,4 +30,3 @@ class LocalStorage {
 }
 
 const localStorageUtil = new LocalStorage();
-localStorageUtil.putProducts('1');

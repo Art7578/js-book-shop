@@ -1,9 +1,29 @@
 class Books {
+    constructor() {
+        this.classNameActive = 'active';
+        this.labelAdd = 'Add to cart';
+        this.labelRemove = 'Remove from cart';
+    }
+
+    handleSetLocationStorage(elemnt, id) {
+        const { pushProducts, products } = localStorageUtil.putProducts(id);
+
+        if (pushProducts) {
+            elemnt.classList.add(this.classNameActive);
+            elemnt.innerHTML = this.labelRemove;
+        } else {
+            elemnt.classList.remove(this.classNameActive);
+            elemnt.innerHTML = this.labelAdd;
+        }
+        headerPage.render(products.length);
+    }
+
     async render() {
         try {
             const books = document.getElementById('books');
             const response = await fetch('books.json');
             const data = await response.json();
+            const productStore = localStorageUtil.getProducts();
             let htmlCatalog = '';
 
             data.forEach(({id, 
@@ -17,6 +37,16 @@ class Books {
                            rating, 
                            reviews, 
                            price}) => {
+                let activeClass = '';
+                let activeText = '';
+                
+                if (productStore.indexOf(id) === -1) {
+                    activeText = this.labelAdd;
+                } else {
+                    activeClass = this.classNameActive;
+                    activeText = this.labelRemove;
+                }
+
                 htmlCatalog += `
                             <li class="books-element">
                                 <img class="books-element__img" src="${img}" alt="${title}">
@@ -31,7 +61,9 @@ class Books {
                                 <p class="books-element__info price">
                                     💲 Price: ${price.toLocaleString()} USD
                                 </p>
-                                <button class="books-element__btn">Добавит в корзину</button>
+                                <button class="books-element__btn ${activeClass}" onclick="booksPage.handleSetLocationStorage(this, ${id})">
+                                    ${activeText}
+                                </button>
                             </li>
                 `
             });
