@@ -18,15 +18,13 @@ class Books {
         headerPage.render(products.length);
     }
 
-    async render() {
+    render() {
         try {
             const books = document.getElementById('books');
-            const response = await fetch('books.json');
-            const data = await response.json();
             const productStore = localStorageUtil.getProducts();
             let htmlCatalog = '';
 
-            data.forEach(({id, 
+            library.forEach(({id, 
                            img, 
                            title, 
                            author, 
@@ -82,4 +80,3 @@ class Books {
 }
 
 const booksPage = new Books();
-booksPage.render();

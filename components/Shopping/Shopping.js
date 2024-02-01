@@ -3,15 +3,13 @@ class Shoping {
         shopping.innerHTML = '';
     } 
      
-    async render() {
+    render() {
         const shopping = document.getElementById('shopping');
-        const response = await fetch('books.json');
-        const data = await response.json();
         const productStore = localStorageUtil.getProducts();
         let htmlCatalog = '';
         let sumCatalog = 0;
 
-        data.forEach(({id, title, price}) => {
+        library.forEach(({id, title, price}) => {
             if (productStore.indexOf(id) !== -1) {
                 htmlCatalog += `
                     <tr>
